@@ -3,6 +3,8 @@
 rm Sayer.*
 rm *.class
 
-jrubyc --javac RubyApp.rb
-javac -cp .:/opt/bin/jruby/lib/jruby.jar JavaApp.java
-java -cp .:/opt/bin/jruby/lib/jruby.jar JavaApp
+mkdir -p classes
+
+jrubyc -t classes --javac RubyApp.rb
+javac -d classes -cp classes:/opt/bin/jruby/lib/jruby.jar JavaApp.java
+java -cp classes:/opt/bin/jruby/lib/jruby.jar JavaApp
